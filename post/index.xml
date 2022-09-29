@@ -6,14 +6,23 @@
     <description>Recent content in Posts on CaiL&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Sep 2022 21:53:41 +0800</lastBuildDate><atom:link href="https://www.flysnow.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Sep 2022 22:20:23 +0800</lastBuildDate><atom:link href="https://www.flysnow.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>线性表</title>
+      <link>https://www.flysnow.org/post/vva9wnq/</link>
+      <pubDate>Thu, 29 Sep 2022 22:20:23 +0800</pubDate>
+      
+      <guid>https://www.flysnow.org/post/vva9wnq/</guid>
+      <description>&lt;p&gt;有关线性表的知识点&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>单链表</title>
       <link>https://www.flysnow.org/post/l33bhfk/</link>
       <pubDate>Thu, 29 Sep 2022 21:53:41 +0800</pubDate>
       
       <guid>https://www.flysnow.org/post/l33bhfk/</guid>
-      <description>&lt;p&gt;单链表的学习&lt;/p&gt;</description>
+      <description>&lt;p&gt;单链表的相关要素&lt;/p&gt;</description>
     </item>
     
   </channel>

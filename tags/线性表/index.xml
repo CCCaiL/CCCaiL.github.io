@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>线性表 on CaiL&#39;s Blog</title>
+    <link>https://www.flysnow.org/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/</link>
+    <description>Recent content in 线性表 on CaiL&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 29 Sep 2022 22:20:23 +0800</lastBuildDate><atom:link href="https://www.flysnow.org/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>线性表</title>
+      <link>https://www.flysnow.org/post/vva9wnq/</link>
+      <pubDate>Thu, 29 Sep 2022 22:20:23 +0800</pubDate>
+      
+      <guid>https://www.flysnow.org/post/vva9wnq/</guid>
+      <description>&lt;p&gt;有关线性表的知识点&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
