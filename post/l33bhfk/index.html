@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>单链表 | CaiL&#39;s Blog</title>
+    <meta property="og:title" content="单链表 - CaiL&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2022-09-29T21:53:41&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2022-09-29T21:53:41&#43;08:00'>
+        
+    <meta name="Keywords" content="CaiL，嵌入式，数据结构">
+    <meta name="description" content="单链表">
+        
+    <meta name="author" content="CaiL">
+    <meta property="og:url" content="https://www.flysnow.org/post/l33bhfk/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://www.flysnow.org">
+                            CaiL&#39;s Blog
+                        </a>
+                    </h1>
+                    <div class="header-info">
+                        <div class="profile-area">
+  <a class="profile-avatar" href="/">
+    <img src="/images/avatar.jpg">
+  </a>
+  <span class="profile-author">CaiL</span>
+  <span class="profile-bio">...</span>
+  
+</div>
+                    </div>
+                
+                <span class="description" id="typed"></span>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://www.flysnow.org">首页</a>
+                    
+                    <a  href="https://www.flysnow.org/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://www.flysnow.org/search/" title="搜索">搜索</a>
+                    
+                    <a  href="https://www.flysnow.org/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="/js/typed.min.js"></script>
+<script>
+    new Typed("#typed",{
+        strings: ['嗨，欢迎访问我的个人博客','专注于嵌入式开发，包括C\/C\u002b\u002b语言','专注于C\/C\u002b\u002b语言，嵌入式'],
+        typeSpeed: 70,
+        backSpeed: 35,
+        startDelay: 1000,
+        backDelay: 1000,
+        loop: true,
+        loopCount: Infinity
+    })
+</script>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <div class="toc-area">
+    <button class="toc-btn" onclick="switchMenu();"><img src="/img/menu.svg"/ title="文章目录"></button>
+    <div class="toc-slide">
+        <div class="toc-title">文章目录</div>
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#单链表">单链表</a></li>
+  </ol>
+</nav>
+    </div>
+</div>
+<script src="/js/toc.js"></script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">单链表</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2022-09-29
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84'>数据结构</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">| <span id="busuanzi_value_page_pv"></span><span>
+                    浏览</span></span>
+        </div>
+        
+        <div class="post-meta">
+            | <span>27 字</span>
+        </div>
+        <div class="post-meta">
+            | <span>1 分钟</span>
+        </div>
+        <div class="post-content">
+            <p>单链表的学习</p>
+<h3 id="单链表">单链表</h3>
+<p>单链表结构体</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span> LNode
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">int</span> *data;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">struct</span> LNode *next;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>}LNode,*LinkList;
+</span></span></code></pre></div>
+        </div>
+
+        
+<div class="post-archive">
+    <span><strong>转载请注明出处（作者，链接）</strong>👇👇👇</span>
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://www.flysnow.org">CaiL</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://www.flysnow.org/post/l33bhfk/">https://www.flysnow.org/post/l33bhfk/</a></li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>其他文章</h2>
+    <ul class="listing">
+        
+        <li><a href="/about/">About</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E5%8D%95%E9%93%BE%E8%A1%A8'>单链表</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    
+    
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        <br/>
+        &copy; 2022 <a rel="nofollow" target="_blank" href="https://www.flysnow.org">CaiL&#39;s Blog</a>
+    </div>
+    <div style="margin-top: 10px;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-red">Maupassant</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/cseric" target="_black"><span class="badge-subject">Modified by</span><span class="badge-value bg-brightgreen">cseric</span></a>
+        </div>
+    </div>
+    
+    <div style="margin-top: 10px; font-size: 14px;">
+        <span>-</span>
+        <span id="busuanzi_container_site_pv">
+            本站总访问量 <span id="busuanzi_value_site_pv" style="color: #1E90FF;"></span> 次
+        </span>
+        <span>|</span>
+        <span id="busuanzi_container_site_uv">
+          本站访客数 <span id="busuanzi_value_site_uv" style="color: #1E90FF;"></span> 人次
+        </span>
+        <span>-</span>
+    </div>
+    
+    
+    <div style="margin-top: 10px; font-size: 14px;">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img src="/img/creative-commons-zero-line.svg" style="vertical-align: sub;"> BY-NC 4.0</a>
+    </div>
+</footer>
+
+
+    
+
+
+<a id="back-top"><img src="/img/top.svg" title="回到顶部"></a>
+<script type="text/javascript" src='/js/totop.js'></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+                </div>
+
+                <div id="secondary">
+
+    <section class="widget">
+        <div class="profile-area">
+  <a class="profile-avatar" href="/">
+    <img src="/images/avatar.jpg">
+  </a>
+  <span class="profile-author">CaiL</span>
+  <span class="profile-bio">...</span>
+  
+</div>
+    </section>
+
+    
+  
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li class="recent-post-item">
+        <a href="https://www.flysnow.org/post/l33bhfk/" title="单链表">单链表</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li class="categories-item"><a href="https://www.flysnow.org/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://www.flysnow.org/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://www.flysnow.org/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

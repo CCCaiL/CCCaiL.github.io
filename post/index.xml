@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on CaiL&#39;s Blog</title>
+    <link>https://www.flysnow.org/post/</link>
+    <description>Recent content in Posts on CaiL&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 29 Sep 2022 21:53:41 +0800</lastBuildDate><atom:link href="https://www.flysnow.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>单链表</title>
+      <link>https://www.flysnow.org/post/l33bhfk/</link>
+      <pubDate>Thu, 29 Sep 2022 21:53:41 +0800</pubDate>
+      
+      <guid>https://www.flysnow.org/post/l33bhfk/</guid>
+      <description>&lt;p&gt;单链表的学习&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
