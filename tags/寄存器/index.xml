@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>寄存器 on CaiL&#39;s Blog</title>
+    <link>https://cccail.github.io/tags/%E5%AF%84%E5%AD%98%E5%99%A8/</link>
+    <description>Recent content in 寄存器 on CaiL&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 30 Sep 2021 17:09:49 +0800</lastBuildDate><atom:link href="https://cccail.github.io/tags/%E5%AF%84%E5%AD%98%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32F103</title>
+      <link>https://cccail.github.io/post/ky9afnn/</link>
+      <pubDate>Thu, 30 Sep 2021 17:09:49 +0800</pubDate>
+      
+      <guid>https://cccail.github.io/post/ky9afnn/</guid>
+      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
