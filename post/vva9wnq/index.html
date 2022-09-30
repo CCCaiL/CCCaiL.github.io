@@ -13,10 +13,10 @@
     <meta property="og:title" content="线性表 - CaiL&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2022-09-29T22:20:23&#43;08:00'>
+    <meta property="article:published_time" content='2021-09-29T22:20:23&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2022-09-29T22:20:23&#43;08:00'>
+    <meta property="article:modified_time" content='2021-09-29T22:20:23&#43;08:00'>
         
     <meta name="Keywords" content="CaiL，嵌入式，数据结构">
     <meta name="description" content="线性表">
@@ -113,7 +113,7 @@
             <h1 class="post-title">线性表</h1>
         </header>
         <date class="post-meta meta-date">
-            2022-09-29
+            2021-09-29
         </date>
         
         <div class="post-meta">
@@ -130,10 +130,10 @@
         </div>
         
         <div class="post-meta">
-            | <span>244 字</span>
+            | <span>853 字</span>
         </div>
         <div class="post-meta">
-            | <span>1 分钟</span>
+            | <span>2 分钟</span>
         </div>
         <div class="post-content">
             <p>有关线性表的知识点</p>
@@ -172,6 +172,71 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>}
 </span></span></code></pre></div><p>​	对于插入，使用C++的引用变量，变量i为插入的位置，变量e为插入的数据。</p>
 <p>​	对i进行判断，判断存储位置是否合法。合法则执行插入操作，并返回一个结果。</p>
+<h5 id="线性表的删除">线性表的删除</h5>
+<p>​	引用需要操作的线性表，并传入删除元素的位置索引i，返回删除元素的值e。数组下标从0开始，所以需要删除的元素的下标索引为i-1。通过遍历循环，从下标为i的元素开始，依次往前移动。并对length减一。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#007f7f">//线性表的删除
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">bool</span> DeleteList(SqList &amp;L,<span style="color:#fff;font-weight:bold">int</span> i,<span style="color:#fff;font-weight:bold">int</span> &amp;e)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    <span style="color:#fff;font-weight:bold">if</span>(i&lt;<span style="color:#ff0;font-weight:bold">1</span> || i&gt;L.length)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    e=L.data[i-<span style="color:#ff0;font-weight:bold">1</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>    <span style="color:#fff;font-weight:bold">for</span>(;i&lt;L.length;i++)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>        L.data[i-<span style="color:#ff0;font-weight:bold">1</span>]=L.data[i];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>    L.length--;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>}
+</span></span></code></pre></div><h5 id="线性表的查找">线性表的查找</h5>
+<p>线性表的查找分为按位查找与按值查找。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#007f7f">//线性表的按位查找
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">int</span> GetList(SqList &amp;L,<span style="color:#fff;font-weight:bold">int</span> i){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>    <span style="color:#fff;font-weight:bold">return</span> L.data[i-<span style="color:#ff0;font-weight:bold">1</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span><span style="color:#007f7f">//线性表的按值查找
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">int</span> LocateList(SqList &amp;L,<span style="color:#fff;font-weight:bold">int</span> i)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>    <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> i=<span style="color:#ff0;font-weight:bold">0</span>;i&lt;L.length;i++)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>        <span style="color:#fff;font-weight:bold">if</span>(L.data[i]==i)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span>            <span style="color:#fff;font-weight:bold">return</span> i+<span style="color:#ff0;font-weight:bold">1</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>}
+</span></span></code></pre></div><h4 id="动态线性表">动态线性表</h4>
+<p>静态线性表在使用上，表长是确定后就无法更改的，存储空间为静态，对于不确定表长的数据，如果直接定义一个较大长度的线性表，将会造成存储空间浪费的现象。对于这种情况可以使用动态分配来创建线性表。</p>
+<h5 id="动态线性表的初始化">动态线性表的初始化</h5>
+<p>使用malloc为动态线性表申请一片存储空间，用 初始化的数组长度 * sizeof(数组类型)获得存储空间的大小。在c++语言中，有着更加严格的类型转换要求，因此需要对malloc进行强转。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#0f0;font-weight:bold">#define InitSize 10
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span><span style="color:#0f0;font-weight:bold"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span><span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    <span style="color:#fff;font-weight:bold">int</span> *data;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    <span style="color:#fff;font-weight:bold">int</span> MaxSize;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    <span style="color:#fff;font-weight:bold">int</span> length;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>}SqList ;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span><span style="color:#007f7f">//申请存储空间
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">void</span> InitList(SqList &amp;L)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span>    L.data=(<span style="color:#fff;font-weight:bold">int</span> *)malloc(InitSize * <span style="color:#fff;font-weight:bold">sizeof</span> (<span style="color:#fff;font-weight:bold">int</span>));
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>    L.length=<span style="color:#ff0;font-weight:bold">10</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>    L.MaxSize=InitSize;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>}
+</span></span></code></pre></div><h5 id="增加存储空间">增加存储空间</h5>
+<p>传入顺序表的引用，需要增加的数组长度。将顺序表的首地址传给指针P，并对顺序表进行增加存储空间的操作，再通过遍历将指针P各个地址的值赋值给增加存储空间后的顺序表。改变顺序表的最大长度和长度，释放指针P。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#007f7f">//增加存储空间
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">void</span> IncreaseList(SqList &amp;L,<span style="color:#fff;font-weight:bold">int</span> len)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    <span style="color:#fff;font-weight:bold">int</span> *p = L.data;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    L.data =(<span style="color:#fff;font-weight:bold">int</span> *) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (<span style="color:#fff;font-weight:bold">int</span>) * (L.MaxSize + len));
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    <span style="color:#fff;font-weight:bold">for</span>(<span style="color:#fff;font-weight:bold">int</span> i=<span style="color:#ff0;font-weight:bold">0</span>;i&lt;L.length;i++)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>        L.data[i]=p[i];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    L.MaxSize+=len;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>    L.length+=len;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>    free(p);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>}
+</span></span></code></pre></div>
         </div>
 
         
@@ -191,10 +256,6 @@
 <div class="post-archive">
     <h2>其他文章</h2>
     <ul class="listing">
-        
-        <li><a href="/post/l33bhfk/">单链表</a></li>
-        
-        <li><a href="/about/">About</a></li>
         
         <li><a href="/archives/">归档</a></li>
         
@@ -288,11 +349,11 @@
 <ul class="widget-list">
     
     <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/vva9wnq/" title="线性表">线性表</a>
+        <a href="https://cccail.github.io/post/l33bhfk/" title="单链表">单链表</a>
     </li>
     
     <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/l33bhfk/" title="单链表">单链表</a>
+        <a href="https://cccail.github.io/post/vva9wnq/" title="线性表">线性表</a>
     </li>
     
 </ul>
