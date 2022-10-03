@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>C&#43;&#43;函数</title>
+      <link>https://cccail.github.io/post/zu7tzwq/</link>
+      <pubDate>Fri, 15 Apr 2022 17:10:17 +0800</pubDate>
+      
+      <guid>https://cccail.github.io/post/zu7tzwq/</guid>
+      <description>有关内联函数 文章标题 C++的内联函数继承C语言宏函数的高效，也可以当作类成员函数使用。 宏函数 宏函数就是宏定义，不会有调用函数的开销，会将使用</description>
+    </item>
+    
+    <item>
       <title>STM32F103</title>
       <link>https://cccail.github.io/post/ky9afnn/</link>
       <pubDate>Thu, 30 Sep 2021 17:09:49 +0800</pubDate>
