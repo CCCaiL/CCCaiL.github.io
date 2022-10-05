@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43;类和对象 on CaiL&#39;s Blog</title>
+    <link>https://cccail.github.io/tags/C&#43;&#43;%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</link>
+    <description>Recent content in C&#43;&#43;类和对象 on CaiL&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language><atom:link href="https://cccail.github.io/tags/C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;的类和对象</title>
+      <link>https://cccail.github.io/post/3rspt3f/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cccail.github.io/post/3rspt3f/</guid>
+      <description>&lt;p&gt;有关C++类与对象的学习&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -130,7 +130,7 @@
         </div>
         
         <div class="post-meta">
-            | <span>1741 字</span>
+            | <span>1798 字</span>
         </div>
         <div class="post-meta">
             | <span>4 分钟</span>
@@ -138,7 +138,7 @@
         <div class="post-content">
             <p>单链表的相关要素</p>
 <h3 id="单链表">单链表</h3>
-<p>单链表结构体</p>
+<p>单链表结构体(若无特殊声明，结点为链表存储数据使用，节点为链表的开/尾端)</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span> LNode
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">int</span> data;
@@ -147,15 +147,17 @@
 </span></span></code></pre></div><ul>
 <li>LNode作为结构体LNode的别名，*LinkList作为结构体指针</li>
 <li>LNode在使用上通常代指结点，*LinkList使用上作为链表</li>
+<li>data为存放的数据</li>
+<li>*next为后继指针，指向后继结点</li>
 </ul>
-<h4 id="不带头结点单链表的初始化">不带头结点单链表的初始化</h4>
+<h4 id="不带头节点单链表的初始化">不带头节点单链表的初始化</h4>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> InitList(LinkList &amp;L)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    L=<span style="color:#fff;font-weight:bold">NULL</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>}
-</span></span></code></pre></div><h4 id="带头结点单链表的初始化">带头结点单链表的初始化</h4>
-<p>给头指针分配一个结点的空间大小，并指向这个结点，作为头结点。</p>
+</span></span></code></pre></div><h4 id="带头节点单链表的初始化">带头节点单链表的初始化</h4>
+<p>给头指针分配一个结点的空间大小，并指向这个结点，作为头节点。</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> InitList(LinkList &amp;L)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    L=(LNode *) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LNode));
@@ -164,16 +166,16 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>    L-&gt;next=<span style="color:#fff;font-weight:bold">NULL</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">8</span><span>}
-</span></span></code></pre></div><h4 id="带头结点与不带头结点的区别">带头结点与不带头结点的区别</h4>
-<p>在使用上，不带头结点更为麻烦。不带头结点的头指针指向用于存放数据的结点；带头结点的头指针则指向头结点，该头结点不存放数据，头结点指向的下一个结点存放数据。</p>
-<h4 id="带头结点的按位插入数据">带头结点的按位插入数据</h4>
-<p>传入链表，判断插入结点的位置。为1，则直接在头结点后插入数据；不为1，则通过while循环找到相应结点，并插入数据。</p>
+</span></span></code></pre></div><h4 id="带头节点与不带头节点的区别">带头节点与不带头节点的区别</h4>
+<p>在使用上，不带头结点更为麻烦。不带头节点的头指针指向用于存放数据的结点；带头节点的头指针则指向头节点，该头节点不存放数据，头节点指向的下一个结点存放数据。</p>
+<h4 id="带头节点的按位插入数据">带头节点的按位插入数据</h4>
+<p>传入链表，判断插入结点的位置。为1，则直接在头节点后插入数据；不为1，则通过while循环找到相应结点，并插入数据。</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span>//按位插入结点
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>bool InsertList(LinkList &amp;L,int i,int e)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    if(i&lt;0) //判断插入位置是否合法
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>        return false;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    LNode *p=L;     //将指针p指向单链表L的头结点
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    LNode *p=L;     //将指针p指向单链表L的头节点
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>    int j=0;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    while(p!=NULL &amp;&amp; j&lt;i-1) //判断要在哪个结点之后插入结点
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>    {
@@ -303,32 +305,32 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>}
 </span></span></code></pre></div><h4 id="单链表的建立">单链表的建立</h4>
 <h5 id="尾插法">尾插法</h5>
-<p>​	先建立一个单链表结构体L，在尾插法函数内引用L，给L分配一个结点的空间作为头结点。创建插入结点s，指向尾结点的结点p。变量x为特定值，则不再插入数据，否则x为插入值。由于最初单链表只有头结点，此时尾结点p指向头结点L。若x为插入值，则将x的值赋值给插入结点s，并使结点p的下一个结点为结点s，再令结点p指向新的尾结点s。以下为尾插法的代码。</p>
+<p>​	先建立一个单链表结构体L，在尾插法函数内引用L，给L分配一个结点的空间作为头节点。创建插入结点s，指向尾结点的结点p。变量x为特定值，则不再插入数据，否则x为插入值。由于最初单链表只有头节点，此时尾结点p指向头节点L。若x为插入值，则将x的值赋值给插入结点s，并使结点p的下一个结点为结点s，再令结点p指向新的尾结点s。以下为尾插法的代码。</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span>LinkList InsertTail(LinkList &amp;L)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>    <span style="color:#fff;font-weight:bold">int</span> x;	<span style="color:#007f7f">//插入值x
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span><span style="color:#007f7f"></span>    L =(LinkList) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LNode));<span style="color:#007f7f">//头结点
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span><span style="color:#007f7f"></span>    L =(LinkList) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LNode));<span style="color:#007f7f">//头节点
 </span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span><span style="color:#007f7f"></span>    LNode *s;	<span style="color:#007f7f">//插入结点
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span><span style="color:#007f7f"></span>    LNode *p=L;	<span style="color:#007f7f">//尾结点
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span><span style="color:#007f7f"></span>    LNode *p=L;	<span style="color:#007f7f">//尾节点
 </span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span><span style="color:#007f7f"></span>    cin &gt;&gt; x ;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    <span style="color:#fff;font-weight:bold">while</span>(x!=<span style="color:#ff0;font-weight:bold">9999</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>    {
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>        s = (LNode *) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LNode));
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>        s-&gt;data=x;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>        p-&gt;next = s;	<span style="color:#007f7f">//尾结点指向新的尾结点
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span><span style="color:#007f7f"></span>        p=s;	<span style="color:#007f7f">//p成为新的尾结点
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>        p-&gt;next = s;	<span style="color:#007f7f">//尾节点指向新的尾节点
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span><span style="color:#007f7f"></span>        p=s;	<span style="color:#007f7f">//p成为新的尾节点
 </span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span><span style="color:#007f7f"></span>        cin &gt;&gt; x;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>    }
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>    p-&gt;next=<span style="color:#fff;font-weight:bold">NULL</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span>    <span style="color:#fff;font-weight:bold">return</span> L;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>}
 </span></span></code></pre></div><h5 id="头插法">头插法</h5>
-<p>传入链表结构体L，给L分配空间，使其成为头结点，并使L指向的下一个结点为空。变量x为特定值则不执行插入操作，否则插入x值。执行插入结点的操作，给插入结点s分配空间，将x值赋值给结点s，并使结点s指向的下一个结点为头结点L所指向的下一个结点，再使头结点L所指向的下一个结点为结点s。</p>
+<p>传入链表结构体L，给L分配空间，使其成为头节点，并使L指向的下一个结点为空。变量x为特定值则不执行插入操作，否则插入x值。执行插入结点的操作，给插入结点s分配空间，将x值赋值给结点s，并使结点s指向的下一个结点为头节点L所指向的下一个结点，再使头节点L指向的下一个结点为结点s。</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span>LinkList InsertHead(LinkList &amp;L)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>    <span style="color:#fff;font-weight:bold">int</span> x;	<span style="color:#007f7f">//变量x
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span><span style="color:#007f7f"></span>    L =(LinkList) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LNode));<span style="color:#007f7f">//头结点
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span><span style="color:#007f7f"></span> 	LNode *s;	<span style="color:#007f7f">//插入节点s
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span><span style="color:#007f7f"></span>    L =(LinkList) malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LNode));<span style="color:#007f7f">//头节点
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span><span style="color:#007f7f"></span> 	LNode *s;	<span style="color:#007f7f">//插入结点s
 </span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span><span style="color:#007f7f"></span>    L-&gt;next = <span style="color:#fff;font-weight:bold">NULL</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>    cin &gt;&gt; x;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    <span style="color:#fff;font-weight:bold">while</span>(x != <span style="color:#ff0;font-weight:bold">999</span>)
@@ -361,6 +363,8 @@
 <div class="post-archive">
     <h2>其他文章</h2>
     <ul class="listing">
+        
+        <li><a href="/post/3rspt3f/">C&#43;&#43;的类和对象</a></li>
         
         <li><a href="/archives/">归档</a></li>
         
@@ -462,6 +466,10 @@
     </li>
     
     <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/94lb9ur/" title="双链表">双链表</a>
+    </li>
+    
+    <li class="recent-post-item">
         <a href="https://cccail.github.io/post/ky9afnn/" title="STM32F103">STM32F103</a>
     </li>
     
@@ -473,6 +481,10 @@
         <a href="https://cccail.github.io/post/l33bhfk/" title="单链表">单链表</a>
     </li>
     
+    <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/3rspt3f/" title="C&#43;&#43;的类和对象">C&#43;&#43;的类和对象</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -482,13 +494,11 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (1)</a></li>
+    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (3)</a></li>
     
     <li class="categories-item"><a href="https://cccail.github.io/categories/STM32F103/">STM32F103 (1)</a></li>
     
-    <li class="categories-item"><a href="https://cccail.github.io/categories/%E5%87%BD%E6%95%B0/">函数 (1)</a></li>
-    
-    <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (2)</a></li>
+    <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (3)</a></li>
     
 </ul>
     </section>
@@ -499,9 +509,13 @@
     
     <a href="https://cccail.github.io/tags/C&#43;&#43;%E7%9A%84%E5%9F%BA%E7%A1%80/">C&#43;&#43;的基础</a>
     
+    <a href="https://cccail.github.io/tags/C&#43;&#43;%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">C&#43;&#43;类和对象</a>
+    
     <a href="https://cccail.github.io/tags/%E5%87%BD%E6%95%B0/">函数</a>
     
     <a href="https://cccail.github.io/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</a>
+    
+    <a href="https://cccail.github.io/tags/%E5%8F%8C%E9%93%BE%E8%A1%A8/">双链表</a>
     
     <a href="https://cccail.github.io/tags/%E5%AF%84%E5%AD%98%E5%99%A8/">寄存器</a>
     
