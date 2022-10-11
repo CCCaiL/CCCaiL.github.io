@@ -98,7 +98,7 @@
         <div class="toc-title">文章目录</div>
         <nav id="TableOfContents">
   <ol>
-    <li><a href="#c类和对象">C++类和对象</a></li>
+    <li><a href="#c类的学习">C++类的学习</a></li>
   </ol>
 </nav>
     </div>
@@ -126,14 +126,14 @@
         </div>
         
         <div class="post-meta">
-            | <span>806 字</span>
+            | <span>1149 字</span>
         </div>
         <div class="post-meta">
-            | <span>2 分钟</span>
+            | <span>3 分钟</span>
         </div>
         <div class="post-content">
             <p>有关C++类与对象的学习</p>
-<h3 id="c类和对象">C++类和对象</h3>
+<h3 id="c类的学习">C++类的学习</h3>
 <h4 id="结构体">结构体</h4>
 <p>在C++中，结构体可以定义变量与函数。</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">struct</span> student
@@ -249,28 +249,82 @@
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">class</span> student
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span><span style="color:#fff;font-weight:bold">public</span>:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    student()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    student(<span style="color:#fff;font-weight:bold">int</span> set_age,string set_name): age(set_age), name(set_name)	<span style="color:#007f7f">//给age，name赋值
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span><span style="color:#007f7f"></span>    {
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>        cout&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34;调用构造函数&#34;</span>&lt;&lt;endl;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    ~student()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>        cout&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34;调用析构函数&#34;</span>&lt;&lt;endl;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>};
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span><span style="color:#fff;font-weight:bold">void</span> test()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>    student cai;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span><span style="color:#fff;font-weight:bold">int</span> main()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21</span><span>   test();	<span style="color:#007f7f">//跳出test函数作用域会自动执行析构函数。
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">22</span><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">23</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>        cout&lt;&lt;name&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>    student(){};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>    ~student()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span>        cout&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34;调用析构函数&#34;</span>&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>    <span style="color:#fff;font-weight:bold">void</span> show()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span>        cout&lt;&lt;name&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>        cout&lt;&lt;age&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20</span><span><span style="color:#fff;font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21</span><span>    <span style="color:#fff;font-weight:bold">int</span> age;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">22</span><span>    string name;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">23</span><span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">25</span><span><span style="color:#fff;font-weight:bold">void</span> test()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">26</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">27</span><span>    student cai;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">28</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">30</span><span><span style="color:#fff;font-weight:bold">int</span> main()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">31</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">32</span><span>   test();	<span style="color:#007f7f">//跳出test函数作用域会自动执行析构函数。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">33</span><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">34</span><span>}
 </span></span></code></pre></div></li>
 </ul>
+<h5 id="拷贝构造函数与匿名函数">拷贝构造函数与匿名函数</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">void</span> test()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    student cai(<span style="color:#ff0;font-weight:bold">10</span>,<span style="color:#0ff;font-weight:bold">&#34;cai&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    student Long(cai);		<span style="color:#007f7f">//拷贝构造函数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span><span style="color:#007f7f"></span>    student(<span style="color:#ff0;font-weight:bold">11</span>,<span style="color:#0ff;font-weight:bold">&#34;Lihua&#34;</span>);	<span style="color:#007f7f">//匿名函数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span><span style="color:#007f7f"></span>    Long.show();<span style="color:#007f7f">//输出10，cai
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span><span style="color:#007f7f"></span>}
+</span></span></code></pre></div><h5 id="拷贝构造函数">拷贝构造函数</h5>
+<p>分为浅拷贝构造函数与深构造拷贝函数</p>
+<ul>
+<li>
+<p>浅拷贝构造函数新旧对象还是共享同一片内存。</p>
+</li>
+<li>
+<p>深拷贝构造函数则是创建一个一模一样的新对象，不在同一片内存。</p>
+</li>
+</ul>
+<h5 id="初始化列表">初始化列表</h5>
+<p>C++语言中存在另一种初始化类的方式，先声明变量，根据声明变量的顺序进行初始化定义。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">class</span> student
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    student(<span style="color:#fff;font-weight:bold">int</span> a1,<span style="color:#fff;font-weight:bold">int</span> b1,<span style="color:#fff;font-weight:bold">int</span> c1): a(a1), b(b1),c(c1)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>    <span style="color:#fff;font-weight:bold">void</span> show()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>        cout&lt;&lt;a&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34; &#34;</span>&lt;&lt;b&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34; &#34;</span>&lt;&lt;c&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span><span style="color:#fff;font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>    <span style="color:#fff;font-weight:bold">int</span> a;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span>    <span style="color:#fff;font-weight:bold">int</span> b;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>    <span style="color:#fff;font-weight:bold">int</span> c;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>};
+</span></span></code></pre></div><h4 id="关键字new与delete">关键字new与delete</h4>
+<p>new的使用方式：类型   *变量名  =  new 类型。</p>
+<p>delete用于释放new所申请的空间。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span>Student *cai=<span style="color:#fff;font-weight:bold">new</span> Student;<span style="color:#007f7f">//创建student类对象
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span><span style="color:#007f7f"></span>   <span style="color:#fff;font-weight:bold">int</span> *p=<span style="color:#fff;font-weight:bold">new</span> <span style="color:#fff;font-weight:bold">int</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>   <span style="color:#fff;font-weight:bold">delete</span>(cai);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>   <span style="color:#fff;font-weight:bold">delete</span>(p);
+</span></span></code></pre></div>
         </div>
 
         
@@ -297,9 +351,9 @@
         
         <li><a href="/post/zu7tzwq/">C&#43;&#43;函数</a></li>
         
-        <li><a href="/post/ojswe3g/">循环链表</a></li>
+        <li><a href="/post/tniuu21/">栈的学习</a></li>
         
-        <li><a href="/post/94lb9ur/">双链表</a></li>
+        <li><a href="/post/ojswe3g/">循环链表</a></li>
         
     </ul>
 </div>
@@ -309,7 +363,7 @@
             
             <ul class="clearfix">
                 
-                <li><a href='/tags/C&#43;&#43;%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1'>C&#43;&#43;类和对象</a></li>
+                <li><a href='/tags/C&#43;&#43;%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0'>C&#43;&#43;类的学习</a></li>
                 
             </ul>
             
@@ -397,6 +451,10 @@
     </li>
     
     <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/tniuu21/" title="栈的学习">栈的学习</a>
+    </li>
+    
+    <li class="recent-post-item">
         <a href="https://cccail.github.io/post/ojswe3g/" title="循环链表">循环链表</a>
     </li>
     
@@ -435,6 +493,8 @@
     
     <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (4)</a></li>
     
+    <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%A0%88/">栈 (1)</a></li>
+    
 </ul>
     </section>
 
@@ -444,7 +504,7 @@
     
     <a href="https://cccail.github.io/tags/C&#43;&#43;%E7%9A%84%E5%9F%BA%E7%A1%80/">C&#43;&#43;的基础</a>
     
-    <a href="https://cccail.github.io/tags/C&#43;&#43;%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">C&#43;&#43;类和对象</a>
+    <a href="https://cccail.github.io/tags/C&#43;&#43;%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/">C&#43;&#43;类的学习</a>
     
     <a href="https://cccail.github.io/tags/%E5%87%BD%E6%95%B0/">函数</a>
     
@@ -455,6 +515,8 @@
     <a href="https://cccail.github.io/tags/%E5%AF%84%E5%AD%98%E5%99%A8/">寄存器</a>
     
     <a href="https://cccail.github.io/tags/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/">循环链表</a>
+    
+    <a href="https://cccail.github.io/tags/%E6%A0%88%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">栈的知识点</a>
     
     <a href="https://cccail.github.io/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">线性表</a>
     

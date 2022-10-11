@@ -9,20 +9,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>循环链表 | CaiL&#39;s Blog</title>
-    <meta property="og:title" content="循环链表 - CaiL&#39;s Blog">
+    <title>栈的学习 | CaiL&#39;s Blog</title>
+    <meta property="og:title" content="栈的学习 - CaiL&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-10-06T17:22:12&#43;08:00'>
+    <meta property="article:published_time" content='2021-10-11T21:09:55&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-10-06T17:22:12&#43;08:00'>
+    <meta property="article:modified_time" content='2021-10-11T21:09:55&#43;08:00'>
         
     <meta name="Keywords" content="CaiL，嵌入式，数据结构">
-    <meta name="description" content="循环链表">
+    <meta name="description" content="栈的学习">
         
     <meta name="author" content="CaiL">
-    <meta property="og:url" content="https://cccail.github.io/post/ojswe3g/">
+    <meta property="og:url" content="https://cccail.github.io/post/tniuu21/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -102,8 +102,7 @@
         <div class="toc-title">文章目录</div>
         <nav id="TableOfContents">
   <ol>
-    <li><a href="#循环单链表">循环单链表</a></li>
-    <li><a href="#循环双链表">循环双链表</a></li>
+    <li><a href="#栈">栈</a></li>
   </ol>
 </nav>
     </div>
@@ -111,16 +110,16 @@
 <script src="/js/toc.js"></script>
     <article class="post">
         <header>
-            <h1 class="post-title">循环链表</h1>
+            <h1 class="post-title">栈的学习</h1>
         </header>
         <date class="post-meta meta-date">
-            2021-10-06
+            2021-10-11
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84'>数据结构</a></span>
+            <span class="meta-category"><a href='/categories/%E6%A0%88'>栈</a></span>
             
         </div>
         
@@ -131,67 +130,68 @@
         </div>
         
         <div class="post-meta">
-            | <span>299 字</span>
+            | <span>335 字</span>
         </div>
         <div class="post-meta">
             | <span>1 分钟</span>
         </div>
         <div class="post-content">
-            <p>循环链表的学习</p>
-<h3 id="循环单链表">循环单链表</h3>
-<p>循环单链表与单链表相比，循环链表的最后结点不指向NULL，而是指向头节点。</p>
-<h4 id="循环链表结构体">循环链表结构体</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span> LNode
+            <p>关于栈的学习</p>
+<h3 id="栈">栈</h3>
+<p>栈是只允许在一端进行插入或删除操作的特殊线性表。</p>
+<ul>
+<li>栈顶是允许进行插入或删除操作的端</li>
+<li>栈底是不允许进行插入或删除操作的端</li>
+<li>元素遵守先进后出的准则。</li>
+</ul>
+<h5 id="结构体定义">结构体定义</h5>
+<p>定义一个数组用于存储数据，top则作为指向栈顶的下标。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">int</span> data;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">struct</span> LNode *next;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>}LNode,*LinkList;
-</span></span></code></pre></div><h4 id="循环链表初始化">循环链表初始化</h4>
-<p>令头节点的下一个结点指向头指针L。</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> Initlist(LinkList &amp;L)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">int</span> data[MaxSize];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">int</span> top;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>}Stack;
+</span></span></code></pre></div><h5 id="栈的初始化">栈的初始化</h5>
+<p>由于最开始没有任何数据，此时top指向-1，表示空栈。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">void</span> InitStack(Stack &amp;S)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    L = (LinkList)malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LinkList));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">if</span>(L == <span style="color:#fff;font-weight:bold">NULL</span>)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>    L-&gt;next = L;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    S.top=-<span style="color:#ff0;font-weight:bold">1</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>}
+</span></span></code></pre></div><h5 id="栈的判空">栈的判空</h5>
+<p>如果下标为-1，表示栈还没有存入数据为空。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> EmptyStack(Stack &amp;S)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">if</span>(S.top == -<span style="color:#ff0;font-weight:bold">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>}
+</span></span></code></pre></div><h5 id="入栈插入数据">入栈（插入数据）</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> InsertStack(Stack &amp;S,<span style="color:#fff;font-weight:bold">int</span> x)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">if</span>(S.top == MaxSize-<span style="color:#ff0;font-weight:bold">1</span>)  <span style="color:#007f7f">//判断是否可以插入数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>    S.top = S.top + <span style="color:#ff0;font-weight:bold">1</span>;      <span style="color:#007f7f">//top+1，成为栈顶，插入数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span><span style="color:#007f7f"></span>    S.data[S.top] = x;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">8</span><span>}
-</span></span></code></pre></div><h4 id="判断是否为空链表">判断是否为空链表</h4>
-<p>如果头节点的下一个结点指向的是头节点，为空链表</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> EmptyList(LinkList &amp;L)
+</span></span></code></pre></div><h5 id="出栈删除数据">出栈（删除数据）</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> DeleteStack(Stack &amp;S,<span style="color:#fff;font-weight:bold">int</span> &amp;x)
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">if</span>(L-&gt;next == L)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>    <span style="color:#fff;font-weight:bold">else</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">if</span>(S.top==-<span style="color:#ff0;font-weight:bold">1</span>)   <span style="color:#007f7f">//判断是否为空栈
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>    x = S.data[S.top];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>    S.top--;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">8</span><span>}
+</span></span></code></pre></div><p>读栈（读取栈顶元素）</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> ReadStack(Stack &amp;S,<span style="color:#fff;font-weight:bold">int</span> &amp;x)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">if</span>(S.top==-<span style="color:#ff0;font-weight:bold">1</span>)   <span style="color:#007f7f">//判断是否为空栈
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span><span style="color:#007f7f"></span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>    x = S.data[S.top];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span>}
-</span></span></code></pre></div><h4 id="判断结点是否为尾结点">判断结点是否为尾结点</h4>
-<p>如果该结点的下一个结点指向的是头节点即为尾结点</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> IsTail(LinkList &amp;L,LNode *p)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">if</span>(p-&gt;next == L)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>    <span style="color:#fff;font-weight:bold">else</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span>}
-</span></span></code></pre></div><h3 id="循环双链表">循环双链表</h3>
-<p>在双链表的基础上，令头节点的前继节点为尾节点，尾节点的后继结点为头节点</p>
-<h5 id="结构体">结构体</h5>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span> LNode
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    <span style="color:#fff;font-weight:bold">int</span> data;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">struct</span> LNode *next,*piror;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>}LNode,*LinkList;
-</span></span></code></pre></div><h5 id="初始化">初始化</h5>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">bool</span> Initlist(LinkList &amp;L)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>    L = (LinkList)malloc(<span style="color:#fff;font-weight:bold">sizeof</span> (LinkList));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">if</span>(L == <span style="color:#fff;font-weight:bold">NULL</span>)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span>        <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">false</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span>    L-&gt;piror=L;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7</span><span>    L-&gt;next = L;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">8</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">true</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">9</span><span>}
 </span></span></code></pre></div>
         </div>
 
@@ -200,7 +200,7 @@
     <span><strong>转载请注明出处（作者，链接）</strong>👇👇👇</span>
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://cccail.github.io">CaiL</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://cccail.github.io/post/ojswe3g/">https://cccail.github.io/post/ojswe3g/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://cccail.github.io/post/tniuu21/">https://cccail.github.io/post/tniuu21/</a></li>
     </ul>
 </div>
 <br/>
@@ -213,6 +213,8 @@
     <h2>其他文章</h2>
     <ul class="listing">
         
+        <li><a href="/post/ojswe3g/">循环链表</a></li>
+        
         <li><a href="/post/94lb9ur/">双链表</a></li>
         
         <li><a href="/post/vva9wnq/">线性表</a></li>
@@ -220,8 +222,6 @@
         <li><a href="/post/ky9afnn/">STM32F103</a></li>
         
         <li><a href="/post/l33bhfk/">单链表</a></li>
-        
-        <li><a href="/post/3rspt3f/">C&#43;&#43;的类和对象</a></li>
         
     </ul>
 </div>
@@ -231,7 +231,7 @@
             
             <ul class="clearfix">
                 
-                <li><a href='/tags/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8'>循环链表</a></li>
+                <li><a href='/tags/%E6%A0%88%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9'>栈的知识点</a></li>
                 
             </ul>
             
