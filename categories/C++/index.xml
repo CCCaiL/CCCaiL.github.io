@@ -6,23 +6,32 @@
     <description>Recent content in C&#43;&#43; on CaiL&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 30 Apr 2022 18:37:24 +0800</lastBuildDate><atom:link href="https://cccail.github.io/categories/C++/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>C&#43;&#43;知识点</title>
-      <link>https://cccail.github.io/post/l0soa25/</link>
-      <pubDate>Sat, 30 Apr 2022 18:37:24 +0800</pubDate>
-      
-      <guid>https://cccail.github.io/post/l0soa25/</guid>
-      <description>&lt;p&gt;C++的学习&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Wed, 13 Apr 2022 15:41:45 +0800</lastBuildDate><atom:link href="https://cccail.github.io/categories/C++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;函数</title>
       <link>https://cccail.github.io/post/zu7tzwq/</link>
-      <pubDate>Fri, 15 Apr 2022 15:41:45 +0800</pubDate>
+      <pubDate>Wed, 13 Apr 2022 15:41:45 +0800</pubDate>
       
       <guid>https://cccail.github.io/post/zu7tzwq/</guid>
       <description>&lt;p&gt;有关函数&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>继承</title>
+      <link>https://cccail.github.io/post/q7qmts4/</link>
+      <pubDate>Thu, 21 Oct 2021 20:53:54 +0800</pubDate>
+      
+      <guid>https://cccail.github.io/post/q7qmts4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>运算符重载</title>
+      <link>https://cccail.github.io/post/f5aas67/</link>
+      <pubDate>Sun, 17 Oct 2021 22:04:05 +0800</pubDate>
+      
+      <guid>https://cccail.github.io/post/f5aas67/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -32,6 +41,15 @@
       
       <guid>https://cccail.github.io/post/3rspt3f/</guid>
       <description>&lt;p&gt;有关C++类与对象的学习&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;知识点</title>
+      <link>https://cccail.github.io/post/l0soa25/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cccail.github.io/post/l0soa25/</guid>
+      <description>&lt;p&gt;C++的学习&lt;/p&gt;</description>
     </item>
     
   </channel>

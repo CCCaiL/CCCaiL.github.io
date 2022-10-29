@@ -98,7 +98,9 @@
         <div class="toc-title">文章目录</div>
         <nav id="TableOfContents">
   <ol>
-    <li><a href="#c类的学习">C++类的学习</a></li>
+    <li><a href="#c类与对象的学习">C++类与对象的学习</a></li>
+    <li><a href="#静态变量">静态变量</a></li>
+    <li><a href="#友元">友元</a></li>
   </ol>
 </nav>
     </div>
@@ -126,14 +128,14 @@
         </div>
         
         <div class="post-meta">
-            | <span>1149 字</span>
+            | <span>1536 字</span>
         </div>
         <div class="post-meta">
-            | <span>3 分钟</span>
+            | <span>4 分钟</span>
         </div>
         <div class="post-content">
             <p>有关C++类与对象的学习</p>
-<h3 id="c类的学习">C++类的学习</h3>
+<h3 id="c类与对象的学习">C++类与对象的学习</h3>
 <h4 id="结构体">结构体</h4>
 <p>在C++中，结构体可以定义变量与函数。</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">struct</span> student
@@ -324,6 +326,68 @@
 </span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span><span style="color:#007f7f"></span>   <span style="color:#fff;font-weight:bold">int</span> *p=<span style="color:#fff;font-weight:bold">new</span> <span style="color:#fff;font-weight:bold">int</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span>   <span style="color:#fff;font-weight:bold">delete</span>(cai);
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>   <span style="color:#fff;font-weight:bold">delete</span>(p);
+</span></span></code></pre></div><h3 id="静态变量">静态变量</h3>
+<p>静态成员变量在类内只能声明，不能定义；要在全局定义，在类内的声明静态成员变量是限制作用域。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1</span><span><span style="color:#fff;font-weight:bold">class</span> Student
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4</span><span>    <span style="color:#fff;font-weight:bold">static</span> <span style="color:#fff;font-weight:bold">int</span> a;	<span style="color:#007f7f">//静态成员变量声明
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5</span><span><span style="color:#007f7f"></span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6</span><span><span style="color:#fff;font-weight:bold">int</span> Student::a=<span style="color:#ff0;font-weight:bold">10</span>;	<span style="color:#007f7f">//静态成员定义
+</span></span></span></code></pre></div><h5 id="单例模式">单例模式</h5>
+<p>步骤:</p>
+<ul>
+<li>无参构造与拷贝构造的私有化。</li>
+<li>定义一个静态的类成员指针变量，并指向new出的一个对象。</li>
+<li>静态的类成员指针变量私有化，设置接口，调用该静态的类成员指针变量。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">class</span> Student
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    <span style="color:#fff;font-weight:bold">int</span> age;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    <span style="color:#fff;font-weight:bold">static</span> Student * getSingle()	<span style="color:#007f7f">//设置接口
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span><span style="color:#007f7f"></span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>        <span style="color:#fff;font-weight:bold">return</span> single;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    };
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span><span style="color:#fff;font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>     <span style="color:#fff;font-weight:bold">static</span> Student *single;	<span style="color:#007f7f">//静态的类成员指针变量
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span><span style="color:#007f7f"></span>     Student(){};	<span style="color:#007f7f">//无参构造与拷贝构造的私有化
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span><span style="color:#007f7f"></span>     Student(<span style="color:#fff;font-weight:bold">const</span> Student &amp;p){};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>Student * Student::single = <span style="color:#fff;font-weight:bold">new</span> Student;<span style="color:#007f7f">//new出一个对象
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">int</span> main()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span>    Student *cai = Student::getSingle();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>    cai-&gt;age=<span style="color:#ff0;font-weight:bold">10</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span>    Student *A = Student::getSingle();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20</span><span>    cout &lt;&lt; cai-&gt;age &lt;&lt;endl;	<span style="color:#007f7f">//输出10
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21</span><span><span style="color:#007f7f"></span>    cout &lt;&lt; A-&gt;age &lt;&lt;endl;	<span style="color:#007f7f">//输出10
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">22</span><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">23</span><span>}
+</span></span></code></pre></div><h3 id="友元">友元</h3>
+<p>友元函数是一种可以访问私有成员的特权函数。在类中，声明友元的全局函数为友元函数。友元函数即可调用私有变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">class</span> Student
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>    <span style="color:#fff;font-weight:bold">friend</span> <span style="color:#fff;font-weight:bold">void</span> print_age(Student &amp;C);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    Student(<span style="color:#fff;font-weight:bold">int</span> a):age(a)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span><span style="color:#fff;font-weight:bold">private</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>    <span style="color:#fff;font-weight:bold">int</span> age;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span><span style="color:#fff;font-weight:bold">void</span> print_age(Student &amp;C)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>    cout&lt;&lt;C.age&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span><span style="color:#fff;font-weight:bold">int</span> main()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span>    Student C(<span style="color:#ff0;font-weight:bold">10</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20</span><span>    print_age(C);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">22</span><span>}
 </span></span></code></pre></div>
         </div>
 
@@ -347,13 +411,13 @@
         
         <li><a href="/about/">About</a></li>
         
-        <li><a href="/post/l0soa25/">C&#43;&#43;知识点</a></li>
-        
         <li><a href="/post/zu7tzwq/">C&#43;&#43;函数</a></li>
         
-        <li><a href="/post/tniuu21/">栈的学习</a></li>
+        <li><a href="/post/q7qmts4/">继承</a></li>
         
-        <li><a href="/post/ojswe3g/">循环链表</a></li>
+        <li><a href="/post/f5aas67/">运算符重载</a></li>
+        
+        <li><a href="/post/71tbnic/">QueueList</a></li>
         
     </ul>
 </div>
@@ -443,11 +507,19 @@
 <ul class="widget-list">
     
     <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/l0soa25/" title="C&#43;&#43;知识点">C&#43;&#43;知识点</a>
+        <a href="https://cccail.github.io/post/zu7tzwq/" title="C&#43;&#43;函数">C&#43;&#43;函数</a>
     </li>
     
     <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/zu7tzwq/" title="C&#43;&#43;函数">C&#43;&#43;函数</a>
+        <a href="https://cccail.github.io/post/q7qmts4/" title="继承">继承</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/f5aas67/" title="运算符重载">运算符重载</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/71tbnic/" title="QueueList">QueueList</a>
     </li>
     
     <li class="recent-post-item">
@@ -474,10 +546,6 @@
         <a href="https://cccail.github.io/post/l33bhfk/" title="单链表">单链表</a>
     </li>
     
-    <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/3rspt3f/" title="C&#43;&#43;的类和对象">C&#43;&#43;的类和对象</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -487,11 +555,11 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (3)</a></li>
+    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (5)</a></li>
     
     <li class="categories-item"><a href="https://cccail.github.io/categories/STM32F103/">STM32F103 (1)</a></li>
     
-    <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (4)</a></li>
+    <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (5)</a></li>
     
     <li class="categories-item"><a href="https://cccail.github.io/categories/%E6%A0%88/">栈 (1)</a></li>
     
@@ -519,6 +587,12 @@
     <a href="https://cccail.github.io/tags/%E6%A0%88%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">栈的知识点</a>
     
     <a href="https://cccail.github.io/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">线性表</a>
+    
+    <a href="https://cccail.github.io/tags/%E7%BB%A7%E6%89%BF/">继承</a>
+    
+    <a href="https://cccail.github.io/tags/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">运算符重载</a>
+    
+    <a href="https://cccail.github.io/tags/%E9%98%9F%E5%88%97/">队列</a>
     
 </div>
     </section>

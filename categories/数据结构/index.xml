@@ -6,7 +6,16 @@
     <description>Recent content in 数据结构 on CaiL&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 06 Oct 2021 17:22:12 +0800</lastBuildDate><atom:link href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Oct 2021 22:13:36 +0800</lastBuildDate><atom:link href="https://cccail.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QueueList</title>
+      <link>https://cccail.github.io/post/71tbnic/</link>
+      <pubDate>Wed, 13 Oct 2021 22:13:36 +0800</pubDate>
+      
+      <guid>https://cccail.github.io/post/71tbnic/</guid>
+      <description>&lt;p&gt;关于队列的学习&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>循环链表</title>
       <link>https://cccail.github.io/post/ojswe3g/</link>
