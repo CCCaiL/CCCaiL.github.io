@@ -9,21 +9,24 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Posts | CaiL&#39;s Blog</title>
-    <meta property="og:title" content="Posts - CaiL&#39;s Blog">
+    <title>多态 | CaiL&#39;s Blog</title>
+    <meta property="og:title" content="多态 - CaiL&#39;s Blog">
     <meta property="og:type" content="article">
         
+    <meta property="article:published_time" content='2021-10-30T17:28:38&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-10-30T17:28:38&#43;08:00'>
         
     <meta name="Keywords" content="CaiL，嵌入式，数据结构">
-    <meta name="description" content="Posts">
+    <meta name="description" content="多态">
         
     <meta name="author" content="CaiL">
-    <meta property="og:url" content="https://cccail.github.io/post/">
+    <meta property="og:url" content="https://cccail.github.io/post/xjs0e53/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml" href="https://cccail.github.io/post/index.xml" title="CaiL's Blog" />
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -93,113 +96,141 @@
                 <div class="col-8" id="main">
                     
 <div class="res-cons">
-    
-    
+    <div class="toc-area">
+    <button class="toc-btn" onclick="switchMenu();"><img src="/img/menu.svg"/ title="文章目录"></button>
+    <div class="toc-slide">
+        <div class="toc-title">文章目录</div>
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#多态">多态</a></li>
+  </ol>
+</nav>
+    </div>
+</div>
+<script src="/js/toc.js"></script>
     <article class="post">
         <header>
-            <h1 class="post-title">
-                <a href="https://cccail.github.io/post/l33bhfk/" title="单链表" target="_blank">单链表</a>
-            </h1>
+            <h1 class="post-title">多态</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年9月29日
+            2021-10-30
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category">
-                <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84' target="_blank">数据结构</a>
-            </span>
+            <span class="meta-category"><a href='/categories/C&#43;&#43;'>C&#43;&#43;</a></span>
             
         </div>
         
-        <div class="post-content">
-            <p>单链表的相关要素</p>……
-        </div>
-        <p class="readmore"><a href="https://cccail.github.io/post/l33bhfk/" target="_blank">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://cccail.github.io/post/l0soa25/" title="C&#43;&#43;知识点" target="_blank">C&#43;&#43;知识点</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
         
         <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category">
-                <a href='/categories/C&#43;&#43;' target="_blank">C&#43;&#43;</a>
-            </span>
-            
+            <span id="busuanzi_container_page_pv">| <span id="busuanzi_value_page_pv"></span><span>
+                    浏览</span></span>
         </div>
-        
-        <div class="post-content">
-            <p>C++的学习</p>……
-        </div>
-        <p class="readmore"><a href="https://cccail.github.io/post/l0soa25/" target="_blank">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://cccail.github.io/post/3rspt3f/" title="C&#43;&#43;的类和对象" target="_blank">C&#43;&#43;的类和对象</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
         
         <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category">
-                <a href='/categories/C&#43;&#43;' target="_blank">C&#43;&#43;</a>
-            </span>
-            
+            | <span>162 字</span>
         </div>
-        
+        <div class="post-meta">
+            | <span>1 分钟</span>
+        </div>
         <div class="post-content">
-            <p>有关C++类与对象的学习</p>……
+            <h3 id="多态">多态</h3>
+<p>多态是一种接口。</p>
+<p>静态多态：用于编译时</p>
+<p>动态多态：运行时，才确定需要调用的地址</p>
+<p>发生多态的条件</p>
+<ul>
+<li>父类有虚函数</li>
+<li>发生继承</li>
+<li>子类需要重写父类的虚函数（返回值，函数名，参数一致，函数体可以不一致）</li>
+<li>父类的指针或引用子类的对象</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">class</span> People
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    <span style="color:#fff;font-weight:bold">virtual</span> <span style="color:#fff;font-weight:bold">void</span> speak()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>        cout&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34;People&#34;</span>&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>    };
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span><span style="color:#fff;font-weight:bold">class</span> Student:<span style="color:#fff;font-weight:bold">public</span> People
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>    <span style="color:#fff;font-weight:bold">void</span> speak()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span>        cout&lt;&lt;<span style="color:#0ff;font-weight:bold">&#34;student&#34;</span>&lt;&lt;endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span>    };
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20</span><span><span style="color:#fff;font-weight:bold">void</span> use_speak(People &amp;p)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">22</span><span>    p.speak();
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">23</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">25</span><span><span style="color:#fff;font-weight:bold">int</span> main()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">26</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">27</span><span>    People a;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">28</span><span>    use_speak(a);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">29</span><span>    Student c;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">30</span><span>    use_speak(c);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">31</span><span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">32</span><span>}
+</span></span></code></pre></div>
         </div>
-        <p class="readmore"><a href="https://cccail.github.io/post/3rspt3f/" target="_blank">阅读全文</a></p>
+
+        
+<div class="post-archive">
+    <span><strong>转载请注明出处（作者，链接）</strong>👇👇👇</span>
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://cccail.github.io">CaiL</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://cccail.github.io/post/xjs0e53/">https://cccail.github.io/post/xjs0e53/</a></li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>其他文章</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/q7qmts4/">继承</a></li>
+        
+        <li><a href="/post/f5aas67/">运算符重载</a></li>
+        
+        <li><a href="/post/71tbnic/">QueueList</a></li>
+        
+        <li><a href="/post/tniuu21/">栈的学习</a></li>
+        
+        <li><a href="/post/ojswe3g/">循环链表</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E5%A4%9A%E6%80%81'>多态</a></li>
+                
+            </ul>
+            
+        </div>
     </article>
     
     
-    
-
-
-
-<ol class="page-navigator">
-    
-    <li class="prev">
-        <a href="https://cccail.github.io/post/">上一页</a>
-    </li>
-    
 
     
-    <li >
-        <a href="https://cccail.github.io/post/">1</a>
-    </li>
     
-    <li  class="current">
-        <a href="https://cccail.github.io/post/page/2/">2</a>
-    </li>
     
-
     
-</ol>
-
-
 
 </div>
 
@@ -239,6 +270,7 @@
 </footer>
 
 
+    
 
 
 <a id="back-top"><img src="/img/top.svg" title="回到顶部"></a>

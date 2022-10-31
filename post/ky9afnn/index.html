@@ -102,7 +102,7 @@
         <div class="toc-title">文章目录</div>
         <nav id="TableOfContents">
   <ol>
-    <li><a href="#寄存器编程">寄存器编程</a></li>
+    <li><a href="#寄存器点亮led">寄存器点亮LED</a></li>
   </ol>
 </nav>
     </div>
@@ -130,15 +130,37 @@
         </div>
         
         <div class="post-meta">
-            | <span>79 字</span>
+            | <span>437 字</span>
         </div>
         <div class="post-meta">
             | <span>1 分钟</span>
         </div>
         <div class="post-content">
-            <h3 id="寄存器编程">寄存器编程</h3>
+            <p>该程序使用野火的STM32F103指南者单片机</p>
+<h3 id="寄存器点亮led">寄存器点亮LED</h3>
+<p>点亮PB0端口LED灯，即GPIOB的下标为0的I/O口。</p>
 <p>寄存器的定义：给某个具有特定功能的内存单元取个别名，这个别名就是寄存器。这个取别名的过程为寄存器映射。</p>
 <p>存储器映射：存储器分配地址的过程叫存储器映射。</p>
+<h4 id="gpiob的基地址">GPIOB的基地址</h4>
+<p>根据APB2基于总线的偏移地址，GPIOB基于APB2总线的偏移地址，按顺序求出APB2的地址以及GPIOB的地址。再依据偏移地址，得到相应寄存器的地址。</p>
+<h5 id="apb2外设时钟使能寄存器rcc_apb2enr">APB2外设时钟使能寄存器(RCC_APB2ENR)</h5>
+<p>能够开启APB2总线上的外设时钟</p>
+<h5 id="端口配置低寄存器gpiox_crl">端口配置低寄存器(GPIOx_CRL)</h5>
+<p>配置该端口相应I/O口的输入输出模式，如果为输出模式，则设置输出速度。</p>
+<h5 id="端口输出数据寄存器gpiox_odr">端口输出数据寄存器(GPIOx_ODR)</h5>
+<p>设置相应I/O口是输出高电平还是低电平</p>
+<h5 id="代码">代码：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">int</span> main(<span style="color:#fff;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span>		<span style="color:#007f7f">//开启GPIOB端口的时钟
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span><span style="color:#007f7f"></span>	* (<span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">int</span> *) <span style="color:#ff0;font-weight:bold">0x40021018</span> |= (<span style="color:#ff0;font-weight:bold">1</span>&lt;&lt;<span style="color:#ff0;font-weight:bold">3</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>	<span style="color:#007f7f">//配置GPIOB的模式
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span><span style="color:#007f7f"></span>	* (<span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">int</span> *) <span style="color:#ff0;font-weight:bold">0x40010C00</span> |= (<span style="color:#ff0;font-weight:bold">1</span>&lt;&lt;<span style="color:#ff0;font-weight:bold">0</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span>	<span style="color:#007f7f">//输出GPIOB的第0个I/O口为低电平
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span><span style="color:#007f7f"></span>	* (<span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">int</span> *) <span style="color:#ff0;font-weight:bold">0x40010C0C</span> &amp;= ~(<span style="color:#ff0;font-weight:bold">1</span>&lt;&lt;<span style="color:#ff0;font-weight:bold">0</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>		
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span>}
+</span></span></code></pre></div>
         </div>
 
         
@@ -261,6 +283,10 @@
     </li>
     
     <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/xjs0e53/" title="多态">多态</a>
+    </li>
+    
+    <li class="recent-post-item">
         <a href="https://cccail.github.io/post/q7qmts4/" title="继承">继承</a>
     </li>
     
@@ -292,10 +318,6 @@
         <a href="https://cccail.github.io/post/ky9afnn/" title="STM32F103">STM32F103</a>
     </li>
     
-    <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/l33bhfk/" title="单链表">单链表</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -305,7 +327,7 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (5)</a></li>
+    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (6)</a></li>
     
     <li class="categories-item"><a href="https://cccail.github.io/categories/STM32F103/">STM32F103 (1)</a></li>
     
@@ -329,6 +351,8 @@
     <a href="https://cccail.github.io/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</a>
     
     <a href="https://cccail.github.io/tags/%E5%8F%8C%E9%93%BE%E8%A1%A8/">双链表</a>
+    
+    <a href="https://cccail.github.io/tags/%E5%A4%9A%E6%80%81/">多态</a>
     
     <a href="https://cccail.github.io/tags/%E5%AF%84%E5%AD%98%E5%99%A8/">寄存器</a>
     

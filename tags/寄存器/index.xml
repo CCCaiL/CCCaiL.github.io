@@ -13,7 +13,7 @@
       <pubDate>Thu, 30 Sep 2021 17:09:49 +0800</pubDate>
       
       <guid>https://cccail.github.io/post/ky9afnn/</guid>
-      <description></description>
+      <description>该程序使用野火的STM32F103指南者单片机 寄存器点亮LED 点亮PB0端口LED灯，即GPIOB的下标为0的I/O口。 寄存器的定义：给某个</description>
     </item>
     
   </channel>

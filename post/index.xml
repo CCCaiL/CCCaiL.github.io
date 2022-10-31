@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>多态</title>
+      <link>https://cccail.github.io/post/xjs0e53/</link>
+      <pubDate>Sat, 30 Oct 2021 17:28:38 +0800</pubDate>
+      
+      <guid>https://cccail.github.io/post/xjs0e53/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>继承</title>
       <link>https://cccail.github.io/post/q7qmts4/</link>
       <pubDate>Thu, 21 Oct 2021 20:53:54 +0800</pubDate>
@@ -85,7 +94,7 @@
       <pubDate>Thu, 30 Sep 2021 17:09:49 +0800</pubDate>
       
       <guid>https://cccail.github.io/post/ky9afnn/</guid>
-      <description></description>
+      <description>该程序使用野火的STM32F103指南者单片机 寄存器点亮LED 点亮PB0端口LED灯，即GPIOB的下标为0的I/O口。 寄存器的定义：给某个</description>
     </item>
     
     <item>

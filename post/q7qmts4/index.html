@@ -130,10 +130,10 @@
         </div>
         
         <div class="post-meta">
-            | <span>364 字</span>
+            | <span>582 字</span>
         </div>
         <div class="post-meta">
-            | <span>1 分钟</span>
+            | <span>2 分钟</span>
         </div>
         <div class="post-content">
             <h3 id="继承">继承</h3>
@@ -143,6 +143,7 @@
 <p>​	子类新增的变量与函数定义。</p>
 <p>}</p>
 <h5 id="继承方式">继承方式：</h5>
+<p>继承无法继承父类的构造与析构函数</p>
 <p>public：公有继承，同类，子类和外部类可访问。父类的public，protected会成为子类的public，protected。</p>
 <p>private：私有继承，只可同类访问。父类的public，protected会变成子类的private。</p>
 <p>protected：保护继承，同类和子类可访问。父类的public，protected类型将会变成子类的protected类型</p>
@@ -169,7 +170,37 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>    <span style="color:#fff;font-weight:bold">int</span> age;
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span>};
 </span></span></code></pre></div><h5 id="子类父类重名">子类父类重名</h5>
-<p>子类和父类有重名成员变量时，父类成员变量会被隐藏。</p>
+<p>当子类和父类有重名成员变量时，无论是否是静态变量，父类成员变量都会被隐藏。</p>
+<h4 id="多继承">多继承</h4>
+<p>C++语言支持多继承，多个父类之间用逗号隔开</p>
+<p>class  子类名 ： 继承方式  父类名1，继承方式  父类名2.。。。</p>
+<p>{</p>
+<p>​	子类新增的变量与函数定义。</p>
+<p>}</p>
+<h4 id="虚继承">虚继承</h4>
+<p>虚继承用于多继承时，若继承的多个父类，这些父类存在有同一个父类时，调用上层的父类变量会产生问题。</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1</span><span><span style="color:#fff;font-weight:bold">class</span> A
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3</span><span><span style="color:#fff;font-weight:bold">public</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4</span><span>    <span style="color:#fff;font-weight:bold">int</span> age;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5</span><span>};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7</span><span><span style="color:#fff;font-weight:bold">class</span> B:<span style="color:#fff;font-weight:bold">virtual</span> <span style="color:#fff;font-weight:bold">public</span> A	<span style="color:#007f7f">//virtual虚继承
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8</span><span><span style="color:#007f7f"></span>{};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10</span><span><span style="color:#fff;font-weight:bold">class</span> C:<span style="color:#fff;font-weight:bold">virtual</span> <span style="color:#fff;font-weight:bold">public</span> A
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11</span><span>{};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13</span><span><span style="color:#fff;font-weight:bold">class</span> D:<span style="color:#fff;font-weight:bold">public</span> B,<span style="color:#fff;font-weight:bold">public</span> C
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14</span><span>{};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16</span><span><span style="color:#fff;font-weight:bold">int</span> main()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18</span><span>    D d;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19</span><span>    d.age=<span style="color:#ff0;font-weight:bold">10</span>;	<span style="color:#007f7f">//若没有声明虚继承，则此行代码产生错误。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20</span><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">return</span> <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21</span><span>}
+</span></span></code></pre></div>
         </div>
 
         
@@ -292,6 +323,10 @@
     </li>
     
     <li class="recent-post-item">
+        <a href="https://cccail.github.io/post/xjs0e53/" title="多态">多态</a>
+    </li>
+    
+    <li class="recent-post-item">
         <a href="https://cccail.github.io/post/q7qmts4/" title="继承">继承</a>
     </li>
     
@@ -323,10 +358,6 @@
         <a href="https://cccail.github.io/post/ky9afnn/" title="STM32F103">STM32F103</a>
     </li>
     
-    <li class="recent-post-item">
-        <a href="https://cccail.github.io/post/l33bhfk/" title="单链表">单链表</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -336,7 +367,7 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (5)</a></li>
+    <li class="categories-item"><a href="https://cccail.github.io/categories/C&#43;&#43;/">C&#43;&#43; (6)</a></li>
     
     <li class="categories-item"><a href="https://cccail.github.io/categories/STM32F103/">STM32F103 (1)</a></li>
     
@@ -360,6 +391,8 @@
     <a href="https://cccail.github.io/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</a>
     
     <a href="https://cccail.github.io/tags/%E5%8F%8C%E9%93%BE%E8%A1%A8/">双链表</a>
+    
+    <a href="https://cccail.github.io/tags/%E5%A4%9A%E6%80%81/">多态</a>
     
     <a href="https://cccail.github.io/tags/%E5%AF%84%E5%AD%98%E5%99%A8/">寄存器</a>
     
